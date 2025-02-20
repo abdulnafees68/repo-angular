@@ -31,4 +31,10 @@ jobs:
           folder: my-angular-homepage/dist/my-angular-homepage/browser  # Ensure this is correct
           branch: gh-pages  # Change this if necessary
           token: ${{ secrets.GH_TOKEN }}
+
+
+
+
+
+
          
