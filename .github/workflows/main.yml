@@ -1,0 +1,34 @@
+name: Angular Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        working-directory: my-angular-homepage
+        run: npm install
+
+      - name: Build Angular app
+        working-directory: my-angular-homepage
+        run: npm run build -- --configuration=production
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: my-angular-homepage/dist/my-angular-homepage/browser  # Ensure this is correct
+          branch: gh-pages  # Change this if necessary
+          token: ${{ secrets.GH_TOKEN }}
+         
