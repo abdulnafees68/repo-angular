@@ -23,8 +23,8 @@ jobs:
 
       - name: Build Angular app
         working-directory: my-angular-homepage
-        run: npm run build -- --prod
-
+        run: npm run build -- --configuration=production
+        
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
