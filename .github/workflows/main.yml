@@ -10,20 +10,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      - name: Build Angular app to prod
+      - name: Install dependencies
         working-directory: my-angular-homepage
-        run: npm install && npm run build:prod
+        run: npm install
+
+      - name: Build Angular app
+        working-directory: my-angular-homepage
+        run: npm run build -- --prod
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: new-project/dist/my-angular-homepage
-          branch: prod  
+          folder: my-angular-homepage/dist/my-angular-homepage  # Ensure this is correct
+          branch: gh-pages  # Change this if necessary
           token: ${{ secrets.GH_TOKEN }}
