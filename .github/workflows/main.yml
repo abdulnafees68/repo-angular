@@ -31,15 +31,5 @@ jobs:
           folder: my-angular-homepage/dist/my-angular-homepage/browser  # Ensure this is correct
           branch: gh-pages  # Change this if necessary
           token: ${{ secrets.GH_TOKEN }}
-
-
- - name: Deploy to Azure VM
-        env:
-          AZURE_VM_IP: ${{ secrets.AZURE_VM_IP }}
-          AZURE_USERNAME: ${{ secrets.AZURE_USERNAME }}
-          AZURE_PASSWORD: ${{ secrets.AZURE_PASSWORD }}
-        run: |
-          sudo apt-get install sshpass
-          sshpass -p "${{ secrets.AZURE_PASSWORD }}" scp -r my-angular-homepage/dist/my-angular-homepage/browser/* "${{ secrets.AZURE_USERNAME }}@${{ secrets.AZURE_VM_IP }}:/var/www/html"
-          sshpass -p "${{ secrets.AZURE_PASSWORD }}" ssh "${{ secrets.AZURE_USERNAME }}@${{ secrets.AZURE_VM_IP }}" 'sudo systemctl restart apache2'
- 
+         
+         
