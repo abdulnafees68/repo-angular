@@ -28,7 +28,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: my-angular-homepage/dist/browser  # Ensure this is correct
+          folder: my-angular-homepage/dist/my-angular-homepage/browser  # Ensure this is correct
           branch: gh-pages  # Change this if necessary
           token: ${{ secrets.GH_TOKEN }}
          
